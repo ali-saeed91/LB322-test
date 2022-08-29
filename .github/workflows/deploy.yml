@@ -21,13 +21,15 @@ jobs:
 
     - name: Run tests
       run:  ng test --watch=false --browsers=ChromeHeadless
+
+    - name: add cli-ghpages
+      run:  ng add angular-cli-ghpages
     
-    - name: Deploy to GitHub Pages
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
-      with:
-        github_access_token: ${{ secrets.GITHUB_TOKEN }}
-        build_configuration: production
-        base_href: /LB322/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
-        deploy_branch: gh-pages
-        angular_dist_build_folder: dist\lb322
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Starting"
+        ng deploy --repo=https://github.com/ali-saeed91/LB322.git --name="ali-saeed91" --email="engineer.ali91@live.com"
 
