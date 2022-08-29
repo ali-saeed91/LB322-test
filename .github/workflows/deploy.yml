@@ -21,12 +21,15 @@ jobs:
 
     - name: Run tests
       run:  ng test --watch=false --browsers=ChromeHeadless
+
+    - name: Build
+      run: ng build -c production  
     
-    - name: Deploy
-      if: github.ref == 'refs/heads/main'
+    - name: Deploy to GitHub Pages
+      uses: Cecilapp/GitHub-Pages-deploy@v3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        echo "Starting"
-        ng deploy --repo=https://github.com/ali-saeed91/LB322.git --name="ali-saeed91" --email="engineer.ali91@live.com"
+      with:
+        email: engineer.ali91@live.com
+        
 
