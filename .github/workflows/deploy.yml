@@ -21,9 +21,6 @@ jobs:
 
     - name: Run tests
       run:  ng test --watch=false --browsers=ChromeHeadless
-
-    - name: add cli-ghpages
-      run:  ng add angular-cli-ghpages
     
     - name: Deploy
       if: github.ref == 'refs/heads/main'
