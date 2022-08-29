@@ -24,7 +24,8 @@ jobs:
 
     - name: Build Production
       run:  ng build LB322 -c production
-
+    
+    - uses: actions/checkout@v2
     - name: Deploy to GitHub Pages
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
       with:
