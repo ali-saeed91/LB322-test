@@ -3,7 +3,7 @@ on:
     branches-ignore:    
       - 'main'
       - 'master'
-      - 'deploy-to-gh-pages'
+      - 'gh-pages'
 jobs:
 
    tests:
