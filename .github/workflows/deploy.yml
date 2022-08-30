@@ -23,14 +23,10 @@ jobs:
       run:  ng test --watch=false --browsers=ChromeHeadless
 
     - name: Build
-      run: ng build -c production  
+      run: ng build LB322-test -c production  
     
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: qoomon/deploy-to-github-pages-action@v1
+    - name : Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        GITHUB_PAGES_SOURCE_DIR: dist # default value:  dist
-        GITHUB_PAGES_BRANCH: gh-pages # default value:  gh-pages
-        GITHUB_PAGES_REPLACE: true  # default value:  false
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        folder : dist/lb322-test
 
