@@ -23,10 +23,10 @@ jobs:
       run:  ng test --watch=false --browsers=ChromeHeadless
 
     - name: Build
-      run: ng build LB322-test -c production  
+      run: ng build LB322 -c production  
     
     - name : Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder : dist/lb322-test
+        folder : dist/lb322
 
