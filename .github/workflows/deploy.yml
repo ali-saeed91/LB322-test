@@ -4,8 +4,7 @@ on:
   push:
     branches:
     - main
-permissions:
-  contents: write
+
 jobs:
 
    job1:
@@ -27,11 +26,11 @@ jobs:
       run: ng build -c production  
     
     - name: Deploy to GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v3
+      if: github.ref == 'refs/heads/main'
+      uses: qoomon/deploy-to-github-pages-action@v1
       with:
-        target_branch: gh-pages
-        build_dir: dist/lb322
-      env:
+        GITHUB_PAGES_SOURCE_DIR: dist # default value:  dist
+        GITHUB_PAGES_BRANCH: gh-pages # default value:  gh-pages
+        GITHUB_PAGES_REPLACE: false   # default value:  false
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
