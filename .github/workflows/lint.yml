@@ -13,8 +13,8 @@ env:
 jobs: 
   linting:
     name: Linting 
-    runs-on: ubuntu-latest # on which machine to run
-    steps: # list of steps
+    runs-on: ubuntu-latest
+    steps: 
       - name: Install NodeJS
         uses: actions/setup-node@v2
         with:
@@ -29,8 +29,8 @@ jobs:
       - name: Install Angular CLI
         run:  npm install -g @angular/cli
 
-      # - name: Code Linting
-      #   run:  npm run lint
+      - name: Code Linting
+        run:  npm run lint
         
       - name: Code Linting Fix
         run:  ng lint --fix=true
